@@ -68,4 +68,14 @@ $app->group('/employee/{employeeId}/salaries/{salaryId}', function () {
     $this->patch('', 'App\Controllers\Employees:updateSalary');
 });
 
+$app->get('/profile/{employeeId}', 'App\Controllers\Employees:showProfile');
+$app->get('/uprofile/{employeeId}', 'App\Controllers\Employees:showNoRedisProfile');
+
+$app->get('/uprofile/{employeeId}/info', 'App\Controllers\Employees:showDetails');
+$app->get('/profile/{employeeId}/info', 'App\Controllers\Employees:showNoRedisDetails');
+
+$app->get('/redis/{employeeId}', 'App\Controllers\Employees:showRedisProfile');
+$app->get('/varnish/{employeeId}', 'App\Controllers\Employees:showVarnishProfile');
+$app->get('/clear/{employeeId}', 'App\Controllers\Employees:showUncachedProfile');
+
 $app->run();
